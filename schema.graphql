@@ -1,0 +1,160 @@
+type EventsSummary {
+  id: ID!
+  editionsMetadataRenderer_EditionInitialized: [EditionsMetadataRenderer_EditionInitialized!]! @derivedFrom(field: "eventsSummary")
+  editionsMetadataRenderer_EditionInitializedCount: BigInt!
+  holographRegistry_HolographableContractEvent: [HolographRegistry_HolographableContractEvent!]! @derivedFrom(field: "eventsSummary")
+  holographRegistry_HolographableContractEventCount: BigInt!
+  holographFactory_BridgeableContractDeployed: [HolographFactory_BridgeableContractDeployed!]! @derivedFrom(field: "eventsSummary")
+  holographFactory_BridgeableContractDeployedCount: BigInt!
+  holographOperator_AvailableOperatorJob: [HolographOperator_AvailableOperatorJob!]! @derivedFrom(field: "eventsSummary")
+  holographOperator_AvailableOperatorJobCount: BigInt!
+  holographOperator_CrossChainMessageSent: [HolographOperator_CrossChainMessageSent!]! @derivedFrom(field: "eventsSummary")
+  holographOperator_CrossChainMessageSentCount: BigInt!
+  holographOperator_FailedOperatorJob: [HolographOperator_FailedOperatorJob!]! @derivedFrom(field: "eventsSummary")
+  holographOperator_FailedOperatorJobCount: BigInt!
+  holographOperator_FinishedOperatorJob: [HolographOperator_FinishedOperatorJob!]! @derivedFrom(field: "eventsSummary")
+  holographOperator_FinishedOperatorJobCount: BigInt!
+  holographableContract_Transfer: [HolographableContract_Transfer!]! @derivedFrom(field: "eventsSummary")
+  holographableContract_TransferCount: BigInt!
+  holographableContract_SecondarySaleFees: [HolographableContract_SecondarySaleFees!]! @derivedFrom(field: "eventsSummary")
+  holographableContract_SecondarySaleFeesCount: BigInt!
+  holographDropERC721_MintFeePayout: [HolographDropERC721_MintFeePayout!]! @derivedFrom(field: "eventsSummary")
+  holographDropERC721_MintFeePayoutCount: BigInt!
+  holographDropERC721_Sale: [HolographDropERC721_Sale!]! @derivedFrom(field: "eventsSummary")
+  holographDropERC721_SaleCount: BigInt!
+}
+
+## --------- Events tables
+
+type EditionsMetadataRenderer_EditionInitialized {
+  id: ID!
+  target: String!
+  description: String!
+  imageURI: String!
+  animationURI: String!
+  logIndex: Int!
+  eventsSummary: String!
+}
+
+type HolographRegistry_HolographableContractEvent {
+  id: ID!
+  _holographableContract: String!
+  _payload: String!
+  logIndex: Int!
+  eventsSummary: String!
+}
+
+type HolographFactory_BridgeableContractDeployed {
+  id: ID!
+  contractAddress: String!
+  hash: String!
+  logIndex: Int!
+  eventsSummary: String!
+}
+
+type HolographOperator_AvailableOperatorJob {
+  id: ID!
+  jobHash: String!
+  payload: String!
+  logIndex: Int!
+  eventsSummary: String!
+}
+
+type HolographOperator_CrossChainMessageSent {
+  id: ID!
+  messageHash: String!
+  logIndex: Int!
+  eventsSummary: String!
+}
+
+type HolographOperator_FailedOperatorJob {
+  id: ID!
+  jobHash: String!
+  logIndex: Int!
+  eventsSummary: String!
+}
+
+type HolographOperator_FinishedOperatorJob {
+  id: ID!
+  jobHash: String!
+  operator: String!
+  logIndex: Int!
+  eventsSummary: String!
+}
+
+
+type HolographableContract_Transfer {
+  id: ID!
+  _from: String!
+  _to: String!
+  _tokenId: BigInt!
+  logIndex: Int!
+  eventsSummary: String!
+}
+
+type HolographableContract_SecondarySaleFees {
+  id: ID!
+  tokenId: BigInt!
+  recipients: [String!]!
+  bps: [BigInt!]!
+  logIndex: Int!
+  eventsSummary: String!
+}
+
+type HolographDropERC721_MintFeePayout {
+  id: ID!
+  mintFeeAmount: BigInt!
+  mintFeeRecipient: String!
+  success: Boolean!
+  logIndex: Int!
+  eventsSummary: String!
+}
+
+type HolographDropERC721_Sale {
+  id: ID!
+  to: String!
+  quantity: BigInt!
+  pricePerToken: BigInt!
+  firstPurchasedTokenId: BigInt!
+  logIndex: Int!
+  eventsSummary: String!
+}
+
+## --------- Entity tables
+
+type Transaction {
+  id: ID!
+  hash: String!
+  chainId: Int!
+  blockNumber: Int!
+  blockTimestamp: Int!
+  from: String
+  to: String
+  logIndexes: [Int!]!
+}
+
+type User {
+  id: ID!
+  walletAddress: String!
+}
+
+enum HolographableContractType {
+  CxipERC721
+  HolographOpenEditionERC721
+  # ERC20
+  UNKNOWN
+}
+
+type HolographableContract {
+  id: ID!
+  contractAddress: String!
+  chainIds: [Int!]!
+  contractType: HolographableContractType!
+}
+
+type NFT {
+  id: ID!
+  chainId: Int!
+  contractAddress: String!
+  tokenId: String!
+}
