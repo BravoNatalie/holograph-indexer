@@ -1,18 +1,15 @@
 # Holograph Indexer
 
-<div style="background-color: #fff3cd; border: 1px solid #ffeeba; padding: 10px; border-radius: 5px; margin-bottom: 20px; color: black">
-<strong>Note:</strong> This is not an official project.
-</div>
+> [!WARNING]
+> This is not an official project.
 
 This project is a custom multi-chain indexer designed for the [Holograph Protocol](https://www.holograph.xyz/).
 
-<br/>
 
 ## Overview
 
 Holograph is an omnichain tokenization protocol that allows asset issuers to mint natively composable omnichain tokens. The Holograph Indexer focuses on indexing the main events emitted by the key protocol smart contracts deployed across multiple networks.
 
-<br/>
 
 ## Features
 
@@ -20,7 +17,6 @@ Holograph is an omnichain tokenization protocol that allows asset issuers to min
 - **Real-Time and Historical Data**: Provides access to both live and past event data.
 - **Efficient Data Handling**: Utilizes [Envio](https://envio.dev/)'s indexing framework to streamline data access, organization, and querying.
 
-<br/>
 
 ## Indexed Events
 
@@ -82,7 +78,6 @@ The bridging process involves several stages and events to ensure assets are acc
 |                             | **FinishedOperatorJob**          | Emitted on successful completion of the bridge transfer.                | Bridge In to destination chain        |
 |                             | **FailedOperatorJob**            | Indicates a failed attempt to complete the bridge transfer.             | Bridge In to destination chain (fail) |
 
-<br/>
 
 
 ## Technology Stack
@@ -103,7 +98,6 @@ Before you begin, ensure you have the following prerequisites installed:
 
 Make sure your development environment meets these requirements to ensure smooth operation of the indexer.
 
-<br/>
 
 ## How to Run
 
