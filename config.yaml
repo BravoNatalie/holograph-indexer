@@ -1,192 +1,202 @@
 name: Holograph Indexer
 contracts:
-- name: EditionsMetadataRenderer
-  handler: src/EventHandlers.ts
-  events:
-  - event: EditionInitialized(address indexed target, string description, string imageURI, string animationURI)
-- name: HolographRegistry
-  handler: src/EventHandlers.ts
-  events:
-  - event: HolographableContractEvent(address indexed _holographableContract, bytes _payload)
-- name: HolographFactory
-  handler: src/EventHandlers.ts
-  events: 
-  - event: BridgeableContractDeployed(address indexed contractAddress, bytes32 indexed hash)
-- name: HolographOperator
-  handler: src/EventHandlers.ts
-  events:
-  - event: AvailableOperatorJob(bytes32 jobHash, bytes payload)
-  - event: CrossChainMessageSent(bytes32 messageHash)
-  - event: FailedOperatorJob(bytes32 jobHash)
-  - event: FinishedOperatorJob(bytes32 jobHash, address operator)
-- name: HolographableContract
-  handler: src/EventHandlers.ts
-  events:
-  - event: Transfer(address indexed _from, address indexed _to, uint256 indexed _tokenId)
-  - event: SecondarySaleFees(uint256 tokenId, address[] recipients, uint256[] bps)
-- name: HolographDropERC721
-  handler: src/EventHandlers.ts
-  events:
-  - event: Sale(address indexed to, uint256 indexed quantity, uint256 indexed pricePerToken, uint256 firstPurchasedTokenId)
-  - event: MintFeePayout(uint256 mintFeeAmount, address mintFeeRecipient, bool success)
+  - name: EditionsMetadataRenderer
+    handler: src/EventHandlers.ts
+    events:
+      - event: EditionInitialized(address indexed target, string description, string imageURI, string animationURI)
+  - name: HolographRegistry
+    handler: src/EventHandlers.ts
+    events:
+      - event: HolographableContractEvent(address indexed _holographableContract, bytes _payload)
+  - name: HolographFactory
+    handler: src/EventHandlers.ts
+    events:
+      - event: BridgeableContractDeployed(address indexed contractAddress, bytes32 indexed hash)
+  - name: HolographOperator
+    handler: src/EventHandlers.ts
+    events:
+      - event: AvailableOperatorJob(bytes32 jobHash, bytes payload)
+      - event: CrossChainMessageSent(bytes32 messageHash)
+      - event: FailedOperatorJob(bytes32 jobHash)
+      - event: FinishedOperatorJob(bytes32 jobHash, address operator)
+  - name: HolographableContract
+    handler: src/EventHandlers.ts
+    events:
+      - event: Transfer(address indexed _from, address indexed _to, uint256 _value)
+      - event: SecondarySaleFees(uint256 tokenId, address[] recipients, uint256[] bps)
+  - name: HolographDropERC721
+    handler: src/EventHandlers.ts
+    events:
+      - event: Sale(address indexed to, uint256 indexed quantity, uint256 indexed pricePerToken, uint256 firstPurchasedTokenId)
+      - event: MintFeePayout(uint256 mintFeeAmount, address mintFeeRecipient, bool success)
 networks:
-- id: 1
-  start_block: 19049292 # oldest block between all listed contracts
-  end_block: null
-  contracts:
-  - name: EditionsMetadataRenderer
-    address:
-    - 0xc85E6BcfB14B2f7D78EcC90bB28A370862bedc05
-  - name: HolographRegistry
-    address:
-    - 0xC0768Aa301FA733E45b2de64657f952407EC564B
-  - name: HolographFactory
-    address:
-    - 0xf3dDf3Dc6ebB5c5Dc878c7A0c8B2C5e051c37594
-  - name: HolographOperator
-    address:
-    - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
-- id: 10
-  start_block: 115091522
-  end_block: null
-  contracts:
-  - name: EditionsMetadataRenderer
-    address:
-    - 0xc85E6BcfB14B2f7D78EcC90bB28A370862bedc05
-  - name: HolographRegistry
-    address:
-    - 0xC0768Aa301FA733E45b2de64657f952407EC564B
-  - name: HolographFactory
-    address:
-    - 0xf3dDf3Dc6ebB5c5Dc878c7A0c8B2C5e051c37594
-  - name: HolographOperator
-    address:
-    - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
-- id: 56
-  start_block: 35417973
-  end_block: null
-  contracts:
-  - name: EditionsMetadataRenderer
-    address:
-    - 0xc85E6BcfB14B2f7D78EcC90bB28A370862bedc05
-  - name: HolographRegistry
-    address:
-    - 0xC0768Aa301FA733E45b2de64657f952407EC564B
-  - name: HolographFactory
-    address:
-    - 0xf3dDf3Dc6ebB5c5Dc878c7A0c8B2C5e051c37594
-  - name: HolographOperator
-    address:
-    - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
-- id: 137
-  start_block: 52552434
-  end_block: null
-  contracts:
-  - name: EditionsMetadataRenderer
-    address:
-    - 0xc85E6BcfB14B2f7D78EcC90bB28A370862bedc05
-  - name: HolographRegistry
-    address:
-    - 0xC0768Aa301FA733E45b2de64657f952407EC564B
-  - name: HolographFactory
-    address:
-    - 0xf3dDf3Dc6ebB5c5Dc878c7A0c8B2C5e051c37594
-  - name: HolographOperator
-    address:
-    - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
-- id: 5000
-  start_block: 49447334
-  end_block: null
-  contracts:
-  - name: EditionsMetadataRenderer
-    address:
-    - 0xc85E6BcfB14B2f7D78EcC90bB28A370862bedc05
-  - name: HolographRegistry
-    address:
-    - 0xC0768Aa301FA733E45b2de64657f952407EC564B
-  - name: HolographFactory
-    address:
-    - 0xf3dDf3Dc6ebB5c5Dc878c7A0c8B2C5e051c37594
-  - name: HolographOperator
-    address:
-    - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
-- id: 8453
-  start_block: 9500433
-  end_block: null
-  contracts:
-  - name: EditionsMetadataRenderer
-    address:
-    - 0xc85E6BcfB14B2f7D78EcC90bB28A370862bedc05
-  - name: HolographRegistry
-    address:
-    - 0xC0768Aa301FA733E45b2de64657f952407EC564B
-  - name: HolographFactory
-    address:
-    - 0xf3dDf3Dc6ebB5c5Dc878c7A0c8B2C5e051c37594
-  - name: HolographOperator
-    address:
-    - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
-- id: 42161
-  start_block: 172485818
-  end_block: null
-  contracts:
-  - name: EditionsMetadataRenderer
-    address:
-    - 0xc85E6BcfB14B2f7D78EcC90bB28A370862bedc05
-  - name: HolographRegistry
-    address:
-    - 0xC0768Aa301FA733E45b2de64657f952407EC564B
-  - name: HolographFactory
-    address:
-    - 0xf3dDf3Dc6ebB5c5Dc878c7A0c8B2C5e051c37594
-  - name: HolographOperator
-    address:
-    - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
-- id: 43114
-  start_block: 40617619
-  end_block: null
-  contracts:
-  - name: EditionsMetadataRenderer
-    address:
-    - 0xc85E6BcfB14B2f7D78EcC90bB28A370862bedc05
-  - name: HolographRegistry
-    address:
-    - 0xC0768Aa301FA733E45b2de64657f952407EC564B
-  - name: HolographFactory
-    address:
-    - 0xf3dDf3Dc6ebB5c5Dc878c7A0c8B2C5e051c37594
-  - name: HolographOperator
-    address:
-    - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
-- id: 59144
-  start_block: 406278
-  end_block: null
-  contracts:
-  - name: EditionsMetadataRenderer
-    address:
-    - 0xc85E6BcfB14B2f7D78EcC90bB28A370862bedc05
-  - name: HolographRegistry
-    address:
-    - 0xC0768Aa301FA733E45b2de64657f952407EC564B
-  - name: HolographFactory
-    address:
-    - 0xf3dDf3Dc6ebB5c5Dc878c7A0c8B2C5e051c37594
-  - name: HolographOperator
-    address:
-    - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
-- id: 7777777
-  start_block: 9622098
-  end_block: null
-  contracts:
-  - name: EditionsMetadataRenderer
-    address:
-    - 0xc85E6BcfB14B2f7D78EcC90bB28A370862bedc05
-  - name: HolographRegistry
-    address:
-    - 0xC0768Aa301FA733E45b2de64657f952407EC564B
-  - name: HolographFactory
-    address:
-    - 0xf3dDf3Dc6ebB5c5Dc878c7A0c8B2C5e051c37594
-  - name: HolographOperator
-    address:
-    - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
+  - id: 1
+    start_block: 19049292 # oldest block between all listed contracts
+    end_block: null
+    contracts:
+      - name: EditionsMetadataRenderer
+        address:
+          - 0xc85E6BcfB14B2f7D78EcC90bB28A370862bedc05
+      - name: HolographRegistry
+        address:
+          - 0xC0768Aa301FA733E45b2de64657f952407EC564B
+      - name: HolographFactory
+        address:
+          - 0xf3dDf3Dc6ebB5c5Dc878c7A0c8B2C5e051c37594
+      - name: HolographOperator
+        address:
+          - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
+      - name: HolographableContract
+  - id: 10
+    start_block: 115091522
+    end_block: null
+    contracts:
+      - name: EditionsMetadataRenderer
+        address:
+          - 0xc85E6BcfB14B2f7D78EcC90bB28A370862bedc05
+      - name: HolographRegistry
+        address:
+          - 0xC0768Aa301FA733E45b2de64657f952407EC564B
+      - name: HolographFactory
+        address:
+          - 0xf3dDf3Dc6ebB5c5Dc878c7A0c8B2C5e051c37594
+      - name: HolographOperator
+        address:
+          - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
+      - name: HolographableContract
+  - id: 56
+    start_block: 35417973
+    end_block: null
+    contracts:
+      - name: EditionsMetadataRenderer
+        address:
+          - 0xc85E6BcfB14B2f7D78EcC90bB28A370862bedc05
+      - name: HolographRegistry
+        address:
+          - 0xC0768Aa301FA733E45b2de64657f952407EC564B
+      - name: HolographFactory
+        address:
+          - 0xf3dDf3Dc6ebB5c5Dc878c7A0c8B2C5e051c37594
+      - name: HolographOperator
+        address:
+          - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
+      - name: HolographableContract
+  - id: 137
+    start_block: 52552434
+    end_block: null
+    contracts:
+      - name: EditionsMetadataRenderer
+        address:
+          - 0xc85E6BcfB14B2f7D78EcC90bB28A370862bedc05
+      - name: HolographRegistry
+        address:
+          - 0xC0768Aa301FA733E45b2de64657f952407EC564B
+      - name: HolographFactory
+        address:
+          - 0xf3dDf3Dc6ebB5c5Dc878c7A0c8B2C5e051c37594
+      - name: HolographOperator
+        address:
+          - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
+      - name: HolographableContract
+  - id: 5000
+    start_block: 49447334
+    end_block: null
+    contracts:
+      - name: EditionsMetadataRenderer
+        address:
+          - 0xc85E6BcfB14B2f7D78EcC90bB28A370862bedc05
+      - name: HolographRegistry
+        address:
+          - 0xC0768Aa301FA733E45b2de64657f952407EC564B
+      - name: HolographFactory
+        address:
+          - 0xf3dDf3Dc6ebB5c5Dc878c7A0c8B2C5e051c37594
+      - name: HolographOperator
+        address:
+          - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
+      - name: HolographableContract
+  - id: 8453
+    start_block: 9500433
+    end_block: null
+    contracts:
+      - name: EditionsMetadataRenderer
+        address:
+          - 0xc85E6BcfB14B2f7D78EcC90bB28A370862bedc05
+      - name: HolographRegistry
+        address:
+          - 0xC0768Aa301FA733E45b2de64657f952407EC564B
+      - name: HolographFactory
+        address:
+          - 0xf3dDf3Dc6ebB5c5Dc878c7A0c8B2C5e051c37594
+      - name: HolographOperator
+        address:
+          - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
+      - name: HolographableContract
+  - id: 42161
+    start_block: 172485818
+    end_block: null
+    contracts:
+      - name: EditionsMetadataRenderer
+        address:
+          - 0xc85E6BcfB14B2f7D78EcC90bB28A370862bedc05
+      - name: HolographRegistry
+        address:
+          - 0xC0768Aa301FA733E45b2de64657f952407EC564B
+      - name: HolographFactory
+        address:
+          - 0xf3dDf3Dc6ebB5c5Dc878c7A0c8B2C5e051c37594
+      - name: HolographOperator
+        address:
+          - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
+      - name: HolographableContract
+  - id: 43114
+    start_block: 40617619
+    end_block: null
+    contracts:
+      - name: EditionsMetadataRenderer
+        address:
+          - 0xc85E6BcfB14B2f7D78EcC90bB28A370862bedc05
+      - name: HolographRegistry
+        address:
+          - 0xC0768Aa301FA733E45b2de64657f952407EC564B
+      - name: HolographFactory
+        address:
+          - 0xf3dDf3Dc6ebB5c5Dc878c7A0c8B2C5e051c37594
+      - name: HolographOperator
+        address:
+          - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
+      - name: HolographableContract
+  - id: 59144
+    start_block: 406278
+    end_block: null
+    contracts:
+      - name: EditionsMetadataRenderer
+        address:
+          - 0xc85E6BcfB14B2f7D78EcC90bB28A370862bedc05
+      - name: HolographRegistry
+        address:
+          - 0xC0768Aa301FA733E45b2de64657f952407EC564B
+      - name: HolographFactory
+        address:
+          - 0xf3dDf3Dc6ebB5c5Dc878c7A0c8B2C5e051c37594
+      - name: HolographOperator
+        address:
+          - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
+      - name: HolographableContract
+  - id: 7777777
+    start_block: 9622098
+    end_block: null
+    contracts:
+      - name: EditionsMetadataRenderer
+        address:
+          - 0xc85E6BcfB14B2f7D78EcC90bB28A370862bedc05
+      - name: HolographRegistry
+        address:
+          - 0xC0768Aa301FA733E45b2de64657f952407EC564B
+      - name: HolographFactory
+        address:
+          - 0xf3dDf3Dc6ebB5c5Dc878c7A0c8B2C5e051c37594
+      - name: HolographOperator
+        address:
+          - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
+      - name: HolographableContract
