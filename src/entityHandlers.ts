@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from "uuid"
+// import { v4 as uuidv4 } from "uuid"
 
 import {
   TransactionEntity,
@@ -30,7 +30,8 @@ export function handleTransaction<E>(
     }
   } else {
     transaction = {
-      id: uuidv4(),
+      // NOTE: For now, the ID will be the same as the hash until a `where` clause is available for the `load` and `get` functions in the event handler.
+      id: event.transactionHash, // uuidv4(),
       hash: event.transactionHash,
       chainId: event.chainId,
       blockNumber: event.blockNumber,
@@ -66,7 +67,8 @@ export function handleHolographableContract<E>(
     }
   } else {
     holographableContract = {
-      id: uuidv4(),
+      // NOTE: For now, the ID will be the same as the contractAddress until a `where` clause is available for the `load` and `get` functions in the event handler.
+      id: contractAddress, // uuidv4(),
       chainIds: [event.chainId],
       contractAddress,
       contractType,
@@ -83,10 +85,44 @@ export function handleUser<E>(
     const dbUserEntry = context.User.get(event.txOrigin)
     if (!dbUserEntry) {
       const user: UserEntity = {
-        id: uuidv4(),
-        walletAddress: event.txOrigin,
+        // NOTE: For now, the ID is going to be the walletAddress
+        id: event.txOrigin, // uuidv4(),
+        address: event.txOrigin,
       }
       context.User.set(user)
     }
   }
+}
+
+export function handleNFT<E>(
+  event: EventLog<E>,
+  context: NFTEntityHandlerContext,
+  contractAddress: string,
+  tokenId: string,
+  owner: string
+) {
+  // '0x' + remove0x(tokenId.toHexString()).padStart(64, '0')
+  // pad(toHex(tokenId), { size: 32 })
+  const id = `${contractAddress}${tokenId}`
+  const dbNFTEntry = context.NFT.get(id)
+
+  let nft: NFTEntity
+  if (dbNFTEntry) {
+    nft = {
+      ...dbNFTEntry,
+      chainId: event.chainId,
+      tokenId,
+      owner,
+    }
+  } else {
+    nft = {
+      // NOTE: NOTE: For now, the ID will be the contractAddress + tokenId until a `where` clause is available for the `load` and `get` functions in the event handler.
+      id, // uuidv4(),
+      chainId: event.chainId,
+      contractAddress,
+      tokenId,
+      owner,
+    }
+  }
+  context.NFT.set(nft)
 }

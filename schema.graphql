@@ -1,27 +1,38 @@
 type EventsSummary {
   id: ID!
-  editionsMetadataRenderer_EditionInitialized: [EditionsMetadataRenderer_EditionInitialized!]! @derivedFrom(field: "eventsSummary")
+  editionsMetadataRenderer_EditionInitialized: [EditionsMetadataRenderer_EditionInitialized!]!
+    @derivedFrom(field: "eventsSummary")
   editionsMetadataRenderer_EditionInitializedCount: BigInt!
-  holographRegistry_HolographableContractEvent: [HolographRegistry_HolographableContractEvent!]! @derivedFrom(field: "eventsSummary")
+  holographRegistry_HolographableContractEvent: [HolographRegistry_HolographableContractEvent!]!
+    @derivedFrom(field: "eventsSummary")
   holographRegistry_HolographableContractEventCount: BigInt!
-  holographFactory_BridgeableContractDeployed: [HolographFactory_BridgeableContractDeployed!]! @derivedFrom(field: "eventsSummary")
+  holographFactory_BridgeableContractDeployed: [HolographFactory_BridgeableContractDeployed!]!
+    @derivedFrom(field: "eventsSummary")
   holographFactory_BridgeableContractDeployedCount: BigInt!
-  holographOperator_AvailableOperatorJob: [HolographOperator_AvailableOperatorJob!]! @derivedFrom(field: "eventsSummary")
+  holographOperator_AvailableOperatorJob: [HolographOperator_AvailableOperatorJob!]!
+    @derivedFrom(field: "eventsSummary")
   holographOperator_AvailableOperatorJobCount: BigInt!
-  holographOperator_CrossChainMessageSent: [HolographOperator_CrossChainMessageSent!]! @derivedFrom(field: "eventsSummary")
+  holographOperator_CrossChainMessageSent: [HolographOperator_CrossChainMessageSent!]!
+    @derivedFrom(field: "eventsSummary")
   holographOperator_CrossChainMessageSentCount: BigInt!
-  holographOperator_FailedOperatorJob: [HolographOperator_FailedOperatorJob!]! @derivedFrom(field: "eventsSummary")
+  holographOperator_FailedOperatorJob: [HolographOperator_FailedOperatorJob!]!
+    @derivedFrom(field: "eventsSummary")
   holographOperator_FailedOperatorJobCount: BigInt!
-  holographOperator_FinishedOperatorJob: [HolographOperator_FinishedOperatorJob!]! @derivedFrom(field: "eventsSummary")
+  holographOperator_FinishedOperatorJob: [HolographOperator_FinishedOperatorJob!]!
+    @derivedFrom(field: "eventsSummary")
   holographOperator_FinishedOperatorJobCount: BigInt!
-  holographableContract_Transfer: [HolographableContract_Transfer!]! @derivedFrom(field: "eventsSummary")
+  holographableContract_Transfer: [HolographableContract_Transfer!]!
+    @derivedFrom(field: "eventsSummary")
   holographableContract_TransferCount: BigInt!
-  holographableContract_SecondarySaleFees: [HolographableContract_SecondarySaleFees!]! @derivedFrom(field: "eventsSummary")
+  holographableContract_SecondarySaleFees: [HolographableContract_SecondarySaleFees!]!
+    @derivedFrom(field: "eventsSummary")
   holographableContract_SecondarySaleFeesCount: BigInt!
-  holographDropERC721_MintFeePayout: [HolographDropERC721_MintFeePayout!]! @derivedFrom(field: "eventsSummary")
-  holographDropERC721_MintFeePayoutCount: BigInt!
-  holographDropERC721_Sale: [HolographDropERC721_Sale!]! @derivedFrom(field: "eventsSummary")
-  holographDropERC721_SaleCount: BigInt!
+  holographableContract_MintFeePayout: [HolographableContract_MintFeePayout!]!
+    @derivedFrom(field: "eventsSummary")
+  holographableContract_MintFeePayoutCount: BigInt!
+  holographableContract_Sale: [HolographableContract_Sale!]!
+    @derivedFrom(field: "eventsSummary")
+  holographableContract_SaleCount: BigInt!
 }
 
 ## --------- Events tables
@@ -82,12 +93,12 @@ type HolographOperator_FinishedOperatorJob {
   eventsSummary: String!
 }
 
-
 type HolographableContract_Transfer {
   id: ID!
-  _from: String!
-  _to: String!
-  _tokenId: BigInt!
+  from: String!
+  to: String!
+  tokenId: String
+  value: BigInt
   logIndex: Int!
   eventsSummary: String!
 }
@@ -101,7 +112,7 @@ type HolographableContract_SecondarySaleFees {
   eventsSummary: String!
 }
 
-type HolographDropERC721_MintFeePayout {
+type HolographableContract_MintFeePayout {
   id: ID!
   mintFeeAmount: BigInt!
   mintFeeRecipient: String!
@@ -110,7 +121,7 @@ type HolographDropERC721_MintFeePayout {
   eventsSummary: String!
 }
 
-type HolographDropERC721_Sale {
+type HolographableContract_Sale {
   id: ID!
   to: String!
   quantity: BigInt!
@@ -124,7 +135,7 @@ type HolographDropERC721_Sale {
 
 type Transaction {
   id: ID!
-  hash: String!
+  hash: String! # NOTE: For now, the ID will be the same as the hash until a `where` clause is available for the `load` and `get` functions in the event handler.
   chainId: Int!
   blockNumber: Int!
   blockTimestamp: Int!
@@ -134,27 +145,28 @@ type Transaction {
 }
 
 type User {
-  id: ID!
-  walletAddress: String!
+  id: ID! # NOTE: For now, the ID is going to be the walletAddress
+  address: String!
 }
 
 enum HolographableContractType {
   CxipERC721
   HolographOpenEditionERC721
-  # ERC20
+  ERC20
   UNKNOWN
 }
 
 type HolographableContract {
-  id: ID!
+  id: ID! # NOTE: For now, the ID will be the same as the contractAddress until a `where` clause is available for the `load` and `get` functions in the event handler.
   contractAddress: String!
   chainIds: [Int!]!
   contractType: HolographableContractType!
 }
 
 type NFT {
-  id: ID!
+  id: ID! # NOTE: For now, the ID will be the contractAddress + tokenId until a `where` clause is available for the `load` and `get` functions in the event handler.
   chainId: Int!
   contractAddress: String!
   tokenId: String!
+  owner: String!
 }

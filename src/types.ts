@@ -8,6 +8,7 @@ import {
 export enum HolographableContractTypeEnum {
   CxipERC721 = "CxipERC721",
   HolographOpenEditionERC721 = "HolographOpenEditionERC721",
+  ERC20 = "ERC20",
   UNKNOWN = "UNKNOWN",
 }
 

@@ -1,7 +1,7 @@
-# Holograph Indexer
-
 > [!WARNING]
 > This is not an official project.
+
+# Holograph Indexer
 
 This project is a custom multi-chain indexer designed for the [Holograph Protocol](https://www.holograph.xyz/).
 
@@ -157,3 +157,19 @@ For more details, refer to the [Envio documentation](https://docs.envio.dev/docs
 <br/>
   Made with ☕ and ❤️ by <b>Natalie Bravo</b>.
 <p/>
+
+<br/>
+
+## Issues
+  - [ ] Missing tokenId when there's a ERC721 Transfer
+  - [ ] Missing Sale events 
+  - [ ] Missing MintFeePayout
+  - [ ] Update HolographableContract as HolographOpenEditionERC721 when EditionInitialized is emmited
+
+- The Sale and MintFeePayout events are emitted by the source contract, making it not possible to link these events to the indexed HolographableContract.
+- A similar issue exists with the EditionInitialized event. The contract address is not directly available from the event. The `event.params.target` refers to the getSourceContract from a HolographOpenEditionERC721 contract, complicating the retrieval of the contract address.
+
+## TODO
+  - [ ] better handler Transfer event to index tokenId
+  - [ ] add MOE_NFT type
+  - [ ] in the future, replace id by the uuid

@@ -22,13 +22,17 @@ contracts:
   - name: HolographableContract
     handler: src/EventHandlers.ts
     events:
+    # - event: Transfer(address indexed _from, address indexed _to, uint256 indexed _tokenId)
       - event: Transfer(address indexed _from, address indexed _to, uint256 _value)
       - event: SecondarySaleFees(uint256 tokenId, address[] recipients, uint256[] bps)
-  - name: HolographDropERC721
-    handler: src/EventHandlers.ts
-    events:
       - event: Sale(address indexed to, uint256 indexed quantity, uint256 indexed pricePerToken, uint256 firstPurchasedTokenId)
       - event: MintFeePayout(uint256 mintFeeAmount, address mintFeeRecipient, bool success)
+  # - name: HolographDropERC721
+  #   handler: src/EventHandlers.ts
+  #   events:
+  #     - event: Transfer(address indexed _from, address indexed _to, uint256 _value)
+  #     - event: Sale(address indexed to, uint256 indexed quantity, uint256 indexed pricePerToken, uint256 firstPurchasedTokenId)
+  #     - event: MintFeePayout(uint256 mintFeeAmount, address mintFeeRecipient, bool success)
 networks:
   - id: 1
     start_block: 19049292 # oldest block between all listed contracts
@@ -47,6 +51,7 @@ networks:
         address:
           - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
       - name: HolographableContract
+      # - name: HolographDropERC721
   - id: 10
     start_block: 115091522
     end_block: null
@@ -64,6 +69,7 @@ networks:
         address:
           - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
       - name: HolographableContract
+      # - name: HolographDropERC721
   - id: 56
     start_block: 35417973
     end_block: null
@@ -81,6 +87,7 @@ networks:
         address:
           - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
       - name: HolographableContract
+      # - name: HolographDropERC721
   - id: 137
     start_block: 52552434
     end_block: null
@@ -98,6 +105,7 @@ networks:
         address:
           - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
       - name: HolographableContract
+      # - name: HolographDropERC721
   - id: 5000
     start_block: 49447334
     end_block: null
@@ -115,6 +123,7 @@ networks:
         address:
           - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
       - name: HolographableContract
+      # - name: HolographDropERC721
   - id: 8453
     start_block: 9500433
     end_block: null
@@ -132,6 +141,7 @@ networks:
         address:
           - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
       - name: HolographableContract
+      # - name: HolographDropERC721
   - id: 42161
     start_block: 172485818
     end_block: null
@@ -149,6 +159,7 @@ networks:
         address:
           - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
       - name: HolographableContract
+      # - name: HolographDropERC721
   - id: 43114
     start_block: 40617619
     end_block: null
@@ -166,6 +177,7 @@ networks:
         address:
           - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
       - name: HolographableContract
+      # - name: HolographDropERC721
   - id: 59144
     start_block: 406278
     end_block: null
@@ -183,6 +195,7 @@ networks:
         address:
           - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
       - name: HolographableContract
+      # - name: HolographDropERC721
   - id: 7777777
     start_block: 9622098
     end_block: null
@@ -200,3 +213,4 @@ networks:
         address:
           - 0xE1dD53589c001982d06247E1259DCC366b8DdB1B
       - name: HolographableContract
+      # - name: HolographDropERC721
